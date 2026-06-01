@@ -39,6 +39,6 @@
 
 ## Image Registry
 
-- **Local K3s Registry**: k3d-cicd-registry:5000 (cluster internal)
-- **Push from Jenkins**: docker push k3d-cicd-registry:5000/...
-- **Pull from K3s**: imagePullPolicy: IfNotPresent
+- **Local K3s Registry**: k3d-cicd-registry:5050 (accessed via host port)
+- **Push from Jenkins**: docker push localhost:5050/... (Docker trusts HTTP on localhost)
+- **Pull from K3s**: k3d-cicd-registry:5050/... (containerd mirrors to registry:5000)

@@ -2,7 +2,7 @@
 set -euo pipefail
 TEMPLATES_DIR="${1:-$(dirname "$0")/../templates/k8s}"
 OUTPUT_DIR="${2:-./rendered}"
-export REGISTRY="${REGISTRY:-k3d-cicd-registry:5000}"
+export REGISTRY="${REGISTRY:-k3d-cicd-registry:5050}"
 export IMAGE_TAG="${IMAGE_TAG:-latest}"
 echo "Rendering K8s templates..."
 echo "  REGISTRY = ${REGISTRY}"
