@@ -3,11 +3,11 @@ kind: Kustomization
 namespace: default
 images:
   - name: todo-backend
-    newName: {{ REGISTRY }}/todo-backend
-    newTag: {{ IMAGE_TAG }}
+    newName: ${REGISTRY}/todo-backend
+    newTag: ${IMAGE_TAG}
   - name: todo-frontend
-    newName: {{ REGISTRY }}/todo-frontend
-    newTag: {{ IMAGE_TAG }}
+    newName: ${REGISTRY}/todo-frontend
+    newTag: ${IMAGE_TAG}
 resources:
   - backend/deployment.yaml
   - backend/service.yaml

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: {{ REGISTRY }}/todo-backend:{{ IMAGE_TAG }}
+          image: ${REGISTRY}/todo-backend:${IMAGE_TAG}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000

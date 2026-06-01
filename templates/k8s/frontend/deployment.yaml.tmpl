@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: {{ REGISTRY }}/todo-frontend:{{ IMAGE_TAG }}
+          image: ${REGISTRY}/todo-frontend:${IMAGE_TAG}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
