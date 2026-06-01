@@ -3,14 +3,11 @@
   "mcpServers": {
     "github": {
       "command": "npx",
-      "args": ["-y", "@github/github-mcp-server"],
-      "env": {
-        "GITHUB_TOKEN": ""
-      }
+      "args": ["-y", "github-mcp-custom@1.0.20", "stdio"]
     },
     "jenkins": {
-      "command": "python3",
-      "args": ["-m", "mcp_jenkins", "--jenkins-url", "http://localhost:8088"]
+      "command": "/home/zhouwenguang/.local/bin/mcp-jenkins",
+      "args": ["--jenkins-url", "http://localhost:8088"]
     },
     "k8s": {
       "command": "npx",
