@@ -8,6 +8,7 @@ pipeline {
         string(name: 'GIT_REPO', defaultValue: 'https://github.com/NoahOno/cicd-demo.git', description: 'Business repo URL')
         string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Branch to build')
         string(name: 'SUBPROJECTS', defaultValue: 'backend,frontend', description: 'Comma-separated subproject dirs')
+        string(name: 'CD_JOB_NAME', defaultValue: 'cicd-demo-cd', description: 'CD Jenkins job name to trigger (if TRIGGER_CD=true)')
         booleanParam(name: 'TRIGGER_CD', defaultValue: false, description: 'Auto-trigger CD pipeline after CI')
     }
 
@@ -68,14 +69,13 @@ pipeline {
             echo "[CI] ${SERVICE}:${TAG} built and pushed successfully"
             script {
                 if (params.TRIGGER_CD) {
-                    def cdJob = "${SERVICE}-cd"
-                    build job: cdJob,
+                    build job: params.CD_JOB_NAME,
                         parameters: [
                             string(name: 'IMAGE_TAG', value: params.IMAGE_TAG),
                             string(name: 'SERVICE_NAME', value: params.SERVICE_NAME)
                         ],
                         wait: false
-                    echo "[CI] Triggered CD job: ${cdJob}"
+                    echo "[CI] Triggered CD job: ${params.CD_JOB_NAME}"
                 }
             }
         }
