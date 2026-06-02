@@ -1,44 +1,44 @@
-# CI/CD Environment Skill
+# CI/CD 环境技能
 
-## Infrastructure
+## 基础设施
 
-- **Jenkins**: http://localhost:8088 (Docker container)
-- **K3s Cluster**: k3d-my-k3d01 (kubectl context)
+- **Jenkins**: http://localhost:8088（Docker 容器）
+- **K3s 集群**: k3d-my-k3d01（kubectl 上下文）
 - **GitHub**: https://github.com/NoahOno
 
-## Repositories
+## 仓库
 
-- **App Code**: https://github.com/NoahOno/cicd-demo
-  - Backend: FastAPI (Python)
-  - Frontend: React + Vite
-  - Dockerfiles in root of each module
-- **K8s Manifests**: https://github.com/NoahOno/cicd-demo-manifests
-  - Rendered YAML files for deployment
-- **CI/CD Config**: https://github.com/NoahOno/cicd-copilot (this repo)
-  - Pipeline templates, K8s templates, MCP config
+- **应用代码**: https://github.com/NoahOno/cicd-demo
+  - 后端：FastAPI（Python）
+  - 前端：React + Vite
+  - Dockerfile 位于各模块根目录
+- **K8s 清单**: https://github.com/NoahOno/cicd-demo-manifests
+  - 渲染后的 YAML 文件，用于部署
+- **CI/CD 配置**: https://github.com/NoahOno/cicd-copilot（本仓库）
+  - 管道模板、K8s 模板、MCP 配置、技能定义
 
-## Workflow
+## 工作流
 
-### Build and Deploy
+### 构建与部署
 
-1. Trigger Jenkins Pipeline via MCP
-2. Pipeline stages: Checkout -> Test -> Docker Build -> Push to K3s registry
-3. Update manifests repo with new image tag
-4. Apply manifests to K3s cluster
+1. 通过 MCP 触发 Jenkins 管道
+2. 管道阶段：检出 → 测试 → Docker 构建 → 推送到 K3s 镜像仓库
+3. 更新清单仓库中的镜像标签
+4. 将清单应用到 K3s 集群
 
-### Check Status
+### 检查状态
 
-1. Query Jenkins build status via MCP
-2. Query K3s pod/service status via MCP
+1. 通过 MCP 查询 Jenkins 构建状态
+2. 通过 MCP 查询 K3s Pod/Service 状态
 
-## MCP Servers
+## MCP 服务器
 
-- **GitHub MCP**: Repository management, file operations
-- **Jenkins MCP**: Trigger builds, check status, get logs
-- **K8s MCP**: Apply manifests, get pods/services, check rollout
+- **GitHub MCP**: 仓库管理、文件操作
+- **Jenkins MCP**: 触发构建、查看状态、获取日志
+- **K8s MCP**: 应用清单、查询 Pod/Service、检查滚动更新
 
-## Image Registry
+## 镜像仓库
 
-- **Local K3s Registry**: k3d-cicd-registry:5050 (accessed via host port)
-- **Push from Jenkins**: docker push localhost:5050/... (Docker trusts HTTP on localhost)
-- **Pull from K3s**: k3d-cicd-registry:5050/... (containerd mirrors to registry:5000)
+- **本地 K3s 镜像仓库**: k3d-cicd-registry:5050（通过主机端口访问）
+- **从 Jenkins 推送**: docker push localhost:5050/...（Docker 信任 localhost 的 HTTP）
+- **从 K3s 拉取**: k3d-cicd-registry:5050/...（containerd 镜像到 registry:5000）

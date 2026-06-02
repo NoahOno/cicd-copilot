@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcpServers": {
+    "github": {
+      "type": "cli",
+      "command": "gh",
+      "args": [],
+      "description": "GitHub 命令行工具，用于仓库管理、PR 操作、Issue 管理等",
+      "enabled": true
+    }
+  }
+}

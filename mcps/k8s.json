@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcpServers": {
+    "k8s": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "kubernetes-mcp-server"],
+      "description": "Kubernetes MCP 服务器，用于应用清单、查询 Pod/Service、检查滚动更新",
+      "enabled": true
+    }
+  }
+}

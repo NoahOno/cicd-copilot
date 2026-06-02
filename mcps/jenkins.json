@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcpServers": {
+    "jenkins": {
+      "type": "stdio",
+      "command": "/home/zhouwenguang/.local/bin/mcp-jenkins",
+      "args": ["--jenkins-url", "http://localhost:8088"],
+      "description": "Jenkins MCP 服务器，用于触发构建、查看状态、获取日志",
+      "enabled": true
+    }
+  }
+}
