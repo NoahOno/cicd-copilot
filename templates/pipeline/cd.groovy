@@ -75,8 +75,10 @@ pipeline {
     post {
         success {
             echo "[CD] ${SERVICE}:${TAG} manifests updated and pushed"
-            if (params.DIRECT_DEPLOY) {
-                echo "[CD] K8s resources applied"
+            script {
+                if (params.DIRECT_DEPLOY) {
+                    echo "[CD] K8s resources applied"
+                }
             }
         }
         failure {
