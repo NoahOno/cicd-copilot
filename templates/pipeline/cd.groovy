@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout true()
+    }
+
     parameters {
         string(name: 'SERVICE_NAME', defaultValue: 'todo', description: 'Service name prefix for image naming')
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag')
