@@ -21,11 +21,9 @@ pipeline {
         stage('Update Manifests') {
             steps {
                 sh 'rm -rf manifests'
-                checkout([$class: 'GitSCM',
-                    branches: [[name: "*/${params.GIT_BRANCH}"]],
-                    userRemoteConfigs: [[url: "${params.MANIFESTS_REPO}"]],
-                    extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'manifests']]
-                ])
+                sh """
+                    git clone --branch ${params.GIT_BRANCH} ${params.MANIFESTS_REPO} manifests
+                """
                 script {
                     def projects = params.SUBPROJECTS.split(',').collect{ it.trim() }
                     projects.each { project ->
