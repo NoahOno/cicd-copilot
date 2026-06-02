@@ -1,17 +1,20 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "mcpServers": {
+  "mcp": {
     "github": {
-      "command": "npx",
-      "args": ["-y", "github-mcp-custom@1.0.20", "stdio"]
+      "type": "local",
+      "command": ["npx", "-y", "github-mcp-custom@1.0.20", "stdio"],
+      "enabled": true
     },
     "jenkins": {
-      "command": "/home/zhouwenguang/.local/bin/mcp-jenkins",
-      "args": ["--jenkins-url", "http://localhost:8088"]
+      "type": "local",
+      "command": ["/home/zhouwenguang/.local/bin/mcp-jenkins", "--jenkins-url", "http://localhost:8088"],
+      "enabled": true
     },
     "k8s": {
-      "command": "npx",
-      "args": ["-y", "kubernetes-mcp-server"]
+      "type": "local",
+      "command": ["npx", "-y", "kubernetes-mcp-server"],
+      "enabled": true
     }
   }
 }
